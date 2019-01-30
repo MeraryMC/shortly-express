@@ -13,7 +13,7 @@ var port = 4568;
 // Remove the 'x' from beforeEach block when working on
 // authentication tests.
 /************************************************************/
-var beforeEach = function() {};
+var xbeforeEach = function() {};
 /************************************************************/
 
 
@@ -50,13 +50,11 @@ describe('', function() {
     var tablenames = ['links', 'clicks', 'users', 'sessions'];
 
 
-
     db.connect(function(err) {
       if (err) { return done(err); }
       /* Empties the db table before each test so that multiple tests
        * (or repeated runs of the tests) won't screw each other up: */
       clearDB(db, tablenames, function() {
-        console.log('hello world');
         server = app.listen(port, done);
       });
     });
@@ -694,7 +692,8 @@ describe('', function() {
 
       var link;
 
-      beforeEach(function(done) {
+      beforeEach
+        (function(done) {
         // save a link to the database
         link = {
           url: 'http://www.google.com/',
